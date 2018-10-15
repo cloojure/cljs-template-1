@@ -1,4 +1,4 @@
-# ClojureScript Template
+# ClojureScript Template Project
 
 A complete, working sample project to demonstrate working code with external JavaScript dependency
 
@@ -41,17 +41,13 @@ To run Doo tests:
 [source,bash]
 ----
 lein doo  phantom  test once    # run the tests once and exit (note: not `phantomjs`)
-lein doo  phantom  test         # rerun the tests after every file edit
-lein doo  chrome   test         # can also test using Chrome browser
+lein doo  phantom  test         # rerun the tests after every file edit       (*** CURRENTLY BROKEN ***)
+
+lein doo  chrome   test once    # can also test using Chrome browser
+lein doo  chrome   test         # rerun the tests after every file edit       (*** CURRENTLY BROKEN ***)
 ----
 
-You can also test in the Chrome browser:
 
-[source,bash]
-----
-lein clean ; lein doo chrome  test once
-----
-  
 ## TODO
 
  - Add reagent stuff
