@@ -1,5 +1,4 @@
 (ns tst.flintstones.dino
- ;(:require-macros )
   (:require
     [flintstones.test :refer [dotest is isnt is= isnt= testing use-fixtures]]
     [dinoPhony]))
