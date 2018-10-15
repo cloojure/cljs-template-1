@@ -45,7 +45,7 @@
                                 "src/cljs" "test/cljs" ] ; #todo  :test-paths ???
                 :compiler     {:main                 tst.flintstones.doorunner
                                :optimizations        :none ; :advanced
-                               :libs                 ["resources/public/libs"] ; recursive includes all children
+                               :libs                 ["resources/public/libs"] ; recursively includes all children
 
                                ; tests run w/o figwheel server, so need to explicitely add path `resources/public` here
                                :foreign-libs         [{:file     "resources/public/dino.js"
