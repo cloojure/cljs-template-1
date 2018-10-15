@@ -1,4 +1,4 @@
-(ns flintstones.test
+(ns flintstones.test  ; *.clj file defines macros
   (:require [cljs.test :as ct] ))
 
 (defmacro use-fixtures  [& forms] `(ct/use-fixtures ~@forms))
