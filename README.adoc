@@ -1,4 +1,4 @@
-# fred
+# ClojureScript Template
 
 A complete, working sample project to demonstrate working code with external JavaScript dependency
 

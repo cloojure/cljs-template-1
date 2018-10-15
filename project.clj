@@ -15,10 +15,10 @@
                          "junitReporter" {"outputDir" "target/test-results"}}}
         :paths {:karma   "node_modules/karma/bin/karma"
                 :phantom "node_modules/phantomjs/bin/phantomjs"}}
-  :source-paths ["src"]
+  :source-paths [ "src/cljs" ]
   :cljsbuild {:builds
               [{:id           "dev"
-                :source-paths ["src"]
+                :source-paths [ "src/cljs" ]
                 ; The presence of a :figwheel configuration here will cause figwheel to inject the
                 ; figwheel client into your build
                 :figwheel     {:on-jsload "flintstones.core/figwheel-reload"
@@ -41,7 +41,7 @@
                                ;                       ^^^^^ must match :output-dir
                                :source-map-timestamp true}}
                {:id           "test"
-                :source-paths ["src" "test"]
+                :source-paths [ "src/cljs" "test/cljs" ]
                 :compiler     {:main                 tst.flintstones.doorunner
                                :optimizations        :none ; :advanced
                                :libs                 ["resources/public/libs"] ; recursive includes all children

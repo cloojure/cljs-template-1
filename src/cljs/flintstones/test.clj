@@ -1,4 +1,4 @@
-(ns flintstones.cljs.test
+(ns flintstones.test
   (:require [cljs.test :as ct] ))
 
 (defmacro use-fixtures  [& forms] `(ct/use-fixtures ~@forms))
