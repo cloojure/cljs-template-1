@@ -1,5 +1,7 @@
 (ns tst.flintstones.pebbles
-  (:require-macros [flintstones.test :refer  [dotest is isnt is= isnt= testing use-fixtures]]))
+  (:require [flintstones.test :refer [dotest is isnt is= isnt= testing use-fixtures]])
+)
+
 (use-fixtures :once
   {:before (fn [] (println "Beginning pebbles tests..."))
    :after  (fn [] (println "Finished pebbles tests..."))})

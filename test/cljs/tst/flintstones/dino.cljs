@@ -1,6 +1,7 @@
 (ns tst.flintstones.dino
-  (:require-macros [flintstones.test :refer  [dotest is isnt is= isnt= testing use-fixtures]])
+ ;(:require-macros )
   (:require
+    [flintstones.test :refer [dotest is isnt is= isnt= testing use-fixtures]]
     [dinoPhony]))
 
 (use-fixtures :once
@@ -28,11 +29,8 @@
   (let [tgt-word-re #"\b\w*a\w*\b"
         words       ["I" "am" "having" "some" "fun" "today"]
         keep?       (fn [word] (re-find tgt-word-re word))
-        keep-words  (filter keep? words)
-        ]
+        keep-words  (filter keep? words) ]
     (prn :keep-words keep-words)
-    (prn :re-seq (re-seq tgt-word-re "I am having some fun today"))
-    )
+    (prn :re-seq (re-seq tgt-word-re "I am having some fun today")) )
 
-  (is= 3 (+ 2 1))
-  )
+  (is= 3 (+ 2 1)))

@@ -1,4 +1,5 @@
-(ns flintstones.test)
+(ns flintstones.test
+  (:require-macros [flintstones.test]))
 
 ;*****************************************************************************
 ;
