@@ -1,5 +1,5 @@
-(ns flintstones.test  ; *.cljc file defines macros
-  (:require [cljs.test :as ct] ))
+(ns flintstones.test ; cljc/**/*.clj file defines macros
+  (:require [cljs.test :as ct]))
 
 (defmacro use-fixtures  [& forms] `(ct/use-fixtures ~@forms))
 (defmacro deftest       [& forms] `(ct/deftest ~@forms))
