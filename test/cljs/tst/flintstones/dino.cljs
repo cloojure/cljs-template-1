@@ -4,8 +4,8 @@
     [dinoPhony]))
 
 (use-fixtures :once
-  {:before (fn [] (println "Beginning dino tests..."))
-   :after  (fn [] (println "Finished dino tests..."))})
+  {:before (fn [] (newline) (println "test - enter") )
+   :after  (fn [] (println "test - leave"))})
 
 (dotest (is= 5 (+ 2 3)))
 ; (deftest t-will-fail (is (= 95 (+ 2 3))))
