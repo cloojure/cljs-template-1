@@ -8,6 +8,10 @@
 
 (dotest
   (is= 2 (+ 1 1)) ; this works
+  (let [data {:a 1 :b 2}
+        {:keys [a b]} data]
+    (is= [a b] [1 2]))
+
   ; This must be commented-out, or it will throw an Error since `pebbles.js` is only
   ; included via the <script> tag in `index.html`. The Doo testing framework doesn't
   ; use `index.html`, so we cannot access items from `pebbles.js` in these tests.
