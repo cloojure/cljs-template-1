@@ -5,6 +5,6 @@
   `(do
      (println "logr-enter")
      (let [result# (do ~@body)]
-       (println "logr-leave")
+       (println "logr-leave" result#)
        result#)))
 

@@ -12,6 +12,7 @@
     [tst.flintstones.wilma]
     [tst.flintstones.pebbles]
     [tst.flintstones.slate]
+    [tst.flintstones.bambam]
   ))
 
 (enable-console-print!)
@@ -22,5 +23,6 @@
   'tst.flintstones.wilma
   'tst.flintstones.pebbles
   'tst.flintstones.slate
+  'tst.flintstones.bambam
 )
 (println "doorunner - end")
