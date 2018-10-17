@@ -3,8 +3,8 @@
 )
 
 (use-fixtures :once
-  {:before (fn [] (newline) (println "test - enter") )
-   :after  (fn [] (println "test - leave"))})
+  {:before (fn [] (newline) (println "test once - enter") )
+   :after  (fn [] (println "test once - leave"))})
 
 (dotest
   (is= 2 (+ 1 1)) ; this works
