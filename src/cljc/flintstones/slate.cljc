@@ -1,11 +1,4 @@
-(ns flintstones.slate 
-)
-
-(defmacro logr [& forms]
-  `(do
-    (println "logr-enter")
-    ~@forms
-    (println "logr-leave")) )
+(ns flintstones.slate)
 
 (defn add2 [x y] (+ x y))
 
