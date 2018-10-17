@@ -1,6 +1,6 @@
 (ns flintstones.slate-macros)
 
-(defmacro logr
+(defmacro logr-slate
   [& body]
   `(do
      (println "logr-enter")
