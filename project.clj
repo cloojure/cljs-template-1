@@ -1,4 +1,4 @@
-(defproject flintstones "0.1.0-SNAPSHOT"
+(defproject cljs-template "0.1.0-SNAPSHOT"
   :min-lein-version "2.7.1"
   :dependencies [[binaryage/oops "0.6.2"]
                  [org.clojure/clojure "1.10.0-beta1"]
