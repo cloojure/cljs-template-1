@@ -1,7 +1,5 @@
 (ns tst.flintstones.slate
   (:require
-    [clojure.string :as str]
-
     #?@(:clj [[flintstones.test-clj :refer [dotest is isnt is= isnt=]]
               [flintstones.slate :as slate]])
 
