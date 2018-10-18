@@ -16,6 +16,7 @@
         :paths {:karma   "node_modules/karma/bin/karma"
                 :phantom "node_modules/phantomjs/bin/phantomjs"}}
   :source-paths [ "src/cljc" "src/clj" ]
+  :test-paths [ "test/cljc" "test/clj" ]
   :cljsbuild {:builds
               [{:id           "dev"
                 :source-paths [ "src/cljc" "src/cljs" ]

@@ -1,8 +1,13 @@
 (ns tst.flintstones.slate
   (:require
-    [flintstones.test-cljs :refer [dotest is isnt is= isnt= testing use-fixtures ]]
-    [flintstones.slate :as slate :include-macros true]
-  ))
+    [clojure.string :as str]
+    #?@(:clj
+        [[flintstones.test-clj :refer [dotest is isnt is= isnt= testing use-fixtures]]
+         [flintstones.slate :as slate]])
+    #?@(:cljs
+        [[flintstones.test-cljs :refer [dotest is isnt is= isnt= testing use-fixtures]]
+         [flintstones.slate :as slate :include-macros true]])
+    ))
 
 (use-fixtures :once
   {:before (fn [] (newline) (println "test once - enter"))

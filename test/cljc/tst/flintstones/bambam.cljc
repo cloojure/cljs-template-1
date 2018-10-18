@@ -1,6 +1,7 @@
 (ns tst.flintstones.bambam
   (:require
-    #?(:clj [flintstones.bambam :as bam])
+    #?@(:clj [[flintstones.bambam :as bam]
+              [flintstones.test-clj   :refer [dotest is isnt is= isnt= testing use-fixtures]]])
     #?@(:cljs [[flintstones.test-cljs :refer [dotest is isnt is= isnt= testing use-fixtures]]
                [flintstones.bambam :as bam :include-macros true]])
   ))
