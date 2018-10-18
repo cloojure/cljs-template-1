@@ -1,7 +1,7 @@
 (ns tst.flintstones.bambam
   (:require
-    #?@(:clj [[flintstones.bambam :as bam]
-              [flintstones.test-clj   :refer [dotest is isnt is= isnt= testing use-fixtures]]])
+    #?@(:clj [[flintstones.test-clj   :refer [dotest is isnt is= isnt= testing use-fixtures]]
+              [flintstones.bambam :as bam]])
     #?@(:cljs [[flintstones.test-cljs :refer [dotest is isnt is= isnt= testing use-fixtures]]
                [flintstones.bambam :as bam :include-macros true]])
   ))
@@ -12,4 +12,4 @@
   (is= 3 (bam/logr-bambam
            (inc 0)
            (inc 1)
-           (inc 2))) )
+           (inc 2))))
