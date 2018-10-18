@@ -2,7 +2,7 @@
   (:require
     [flintstones.test-cljs :refer [dotest is isnt is= isnt= testing use-fixtures ]]
     [flintstones.slate :as slate :include-macros true]
-  ) )
+  ))
 
 (use-fixtures :once
   {:before (fn [] (newline) (println "test once - enter"))
