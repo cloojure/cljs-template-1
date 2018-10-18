@@ -3,9 +3,9 @@
 (defmacro logr-bambam
   [& body]
   `(do
-     (println "logr-enter-bambam")
+     (println "logr-bambam-enter")
      (let [result# (do ~@body)]
-       (println "logr-leave-bambam" result#)
+       (println "logr-bambam-leave" result#)
        result#)))
 
 (defn add2 [x y] (+ x y))

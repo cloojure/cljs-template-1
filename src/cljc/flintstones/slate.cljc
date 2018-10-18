@@ -5,7 +5,7 @@
 (defmacro logr-slate
   [& body]
   `(do
-     (println "logr-enter")
+     (println "logr-slate-enter")
      (let [result# (do ~@body)]
-       (println "logr-leave" result#)
+       (println "logr-slate-leave" result#)
        result#)))
