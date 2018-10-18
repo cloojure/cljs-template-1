@@ -1,6 +1,6 @@
 (ns tst.flintstones.slate
   (:require
-    [flintstones.test :refer [dotest is isnt is= isnt= testing use-fixtures ]]
+    [flintstones.test-cljs :refer [dotest is isnt is= isnt= testing use-fixtures ]]
     [flintstones.slate :as fs ]
     [flintstones.slate-macros :as fsm])
   (:require-macros [flintstones.slate :as fs]))

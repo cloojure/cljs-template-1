@@ -1,5 +1,5 @@
 (ns tst.flintstones.pebbles
-  (:require [flintstones.test :refer [dotest is isnt is= isnt= testing use-fixtures]])
+  (:require [flintstones.test-cljs :refer [dotest is isnt is= isnt= testing use-fixtures]])
 )
 
 (use-fixtures :once

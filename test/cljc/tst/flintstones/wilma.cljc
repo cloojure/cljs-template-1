@@ -3,7 +3,7 @@
     [wilmaPhony] ; This one must be first or get;
     ;   "WARNING: Use of undeclared Var cljs.test/test-var at line 15 test/cljs/tst/flintstones/wilma.cljs"
 
-    [flintstones.test :refer  [dotest is isnt is= isnt= testing use-fixtures]]
+    [flintstones.test-cljs :refer  [dotest is isnt is= isnt= testing use-fixtures]]
     ; #todo #awt If forget to list a macro here get an error like:
     ;     FAIL in   (dotest-line-13) (TypeError:NaN:NaN)
     ;     failed with TypeError: Cannot read property 'call' of undefined

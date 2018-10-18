@@ -1,5 +1,5 @@
-(ns flintstones.test  ; *.cljs file makes macros available to normal CLJS code
-  (:require-macros [flintstones.test]))
+(ns flintstones.test-cljs  ; *.cljs file makes macros available to normal CLJS code
+  (:require-macros [flintstones.test-cljs]))
 
 ;*****************************************************************************
 ;

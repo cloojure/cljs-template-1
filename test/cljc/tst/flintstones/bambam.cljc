@@ -1,9 +1,9 @@
 (ns tst.flintstones.bambam
   (:require
-    [flintstones.test :refer [dotest is isnt is= isnt= testing use-fixtures]]
-    #?(:clj  [flintstones.bambam :as bam])
-    #?(:cljs [flintstones.bambam :as bam :include-macros true]))
-)
+    #?(:clj [flintstones.bambam :as bam])
+    #?@(:cljs [[flintstones.test-cljs :refer [dotest is isnt is= isnt= testing use-fixtures]]
+               [flintstones.bambam :as bam :include-macros true]])
+  ))
 
 (dotest
   (is= 2 (+ 1 1))   ; this works

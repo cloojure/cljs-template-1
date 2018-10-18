@@ -1,6 +1,6 @@
 (ns tst.flintstones.dino
   (:require
-    [flintstones.test :refer [dotest is isnt is= isnt= testing use-fixtures]]
+    [flintstones.test-cljs :refer [dotest is isnt is= isnt= testing use-fixtures]]
     [dinoPhony]))
 
 (use-fixtures :once
