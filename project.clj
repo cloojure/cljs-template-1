@@ -1,13 +1,13 @@
 (defproject cljs-template "0.1.0-SNAPSHOT"
   :min-lein-version "2.7.1"
-  :dependencies [[binaryage/oops "0.6.2"]
-                 [org.clojure/clojure "1.10.0-beta1"]
-                 [org.clojure/clojurescript "1.10.339"]
+  :dependencies [[binaryage/oops "0.7.0"]
+                 [org.clojure/clojure "1.10.0"]
+                 [org.clojure/clojurescript "1.10.439"]
                  [reagent "0.8.1"]
-                 [reagent-utils "0.3.1"]
-                 [tupelo "0.9.105"]]
+                 [reagent-utils "0.3.2"]
+                 [tupelo "0.9.137"]]
   :plugins [[lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]
-            [lein-figwheel "0.5.16"]
+            [lein-figwheel "0.5.18"]
             [lein-doo "0.1.10"]]
 
   :doo {:karma {:config {"plugins"       ["karma-junit-reporter"]
@@ -15,6 +15,7 @@
                          "junitReporter" {"outputDir" "target/test-results"}}}
         :paths {:karma   "node_modules/karma/bin/karma"
                 :phantom "node_modules/phantomjs/bin/phantomjs"}}
+
   :source-paths [ "src/cljc" "src/clj" ]
   :test-paths [ "test/cljc" "test/clj" ]
   :cljsbuild {:builds
@@ -40,7 +41,8 @@
                                :output-dir           "resources/public/js/compiled/flintstones-dev"
                                :asset-path           "js/compiled/flintstones-dev" ; rel to figwheel default of `resources/public`
                                ;                       ^^^^^ must match :output-dir
-                               :source-map-timestamp true}}
+                               :source-map-timestamp true
+                               }}
                {:id           "test"
                 :source-paths [ "src/cljc" "test/cljc"
                                 "src/cljs" "test/cljs" ] ; #todo  :test-paths ???
