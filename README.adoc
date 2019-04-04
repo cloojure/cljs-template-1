@@ -40,11 +40,14 @@ To run Doo tests:
 
 [source,bash]
 ----
-lein doo  phantom  test once    # run the tests once and exit (note: not `phantomjs`)
-lein doo  phantom  test         # rerun the tests after every file edit       (*** CURRENTLY BROKEN ***)
-
 lein doo  chrome   test once    # can also test using Chrome browser
 lein doo  chrome   test         # rerun the tests after every file edit       (*** CURRENTLY BROKEN ***)
+
+lein doo  firefox  test once    # can also test using Firefox browser
+lein doo  firefox  test         # rerun the tests after every file edit       (*** CURRENTLY BROKEN ***)
+
+lein doo  safari   test once    # can also test using Safari browser
+lein doo  safari   test         # rerun the tests after every file edit       (*** CURRENTLY BROKEN ***)
 ----
 
 
@@ -52,6 +55,18 @@ lein doo  chrome   test         # rerun the tests after every file edit       (*
 
  - Add reagent stuff
  - Add reframe stuff
+
+## Obsolete or nonworking stuff
+[source,bash]
+----
+# slimer won't work with current version of firefox as of 2019-4-4
+# lein doo  slimerjs  test once    # run the tests once and exit (note: not `phantomjs`)
+# lein doo  slimerjs  test         # rerun the tests after every file edit       (*** CURRENTLY BROKEN ***)
+
+# phantomjs is stuck with obsolete version of React as of 2019-4-4
+# lein doo  phantom  test once    # run the tests once and exit (note: not `phantomjs`)
+# lein doo  phantom  test         # rerun the tests after every file edit       (*** CURRENTLY BROKEN ***)
+----
 
 ## License
 
