@@ -1,11 +1,12 @@
 (defproject cljs-template "0.1.0-SNAPSHOT"
-  :min-lein-version "2.7.1"
+  :min-lein-version "2.8.1"
   :dependencies [[binaryage/oops "0.7.0"]
                  [org.clojure/clojure "1.10.0"]
                  [org.clojure/clojurescript "1.10.520"]
                  [reagent "0.8.1"]
                  [reagent-utils "0.3.2"]
-                 [tupelo "0.9.138"]]
+                 [tupelo "0.9.138"]
+                 ]
   :plugins [[lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]
             [lein-figwheel "0.5.18"]
             [lein-doo "0.1.10"]]
@@ -15,11 +16,11 @@
                          "junitReporter" {"outputDir" "target/test-results"}}}
         :paths {:karma   "node_modules/karma/bin/karma"
                 :phantom "node_modules/phantomjs/bin/phantomjs"}}
-  :source-paths [ "src/cljc" "src/clj" ]
-  :test-paths [ "test/cljc" "test/clj" ]
+  :source-paths ["src/cljc" "src/clj"]
+  :test-paths ["test/cljc" "test/clj"]
   :cljsbuild {:builds
               [{:id           "dev"
-                :source-paths [ "src/cljc" "src/cljs" ]
+                :source-paths ["src/cljc" "src/cljs"]
                 ; The presence of a :figwheel configuration here will cause figwheel to inject the
                 ; figwheel client into your build
                 :figwheel     {:on-jsload "flintstones.core/figwheel-reload"
@@ -42,8 +43,8 @@
                                ;                       ^^^^^ must match :output-dir
                                :source-map-timestamp true}}
                {:id           "test"
-                :source-paths [ "src/cljc" "test/cljc"
-                                "src/cljs" "test/cljs" ] ; #todo  :test-paths ???
+                :source-paths ["src/cljc" "test/cljc"
+                               "src/cljs" "test/cljs"] ; #todo  :test-paths ???
                 :compiler     {:main                 tst.flintstones.doorunner
                                :optimizations        :none ; :advanced
                                :libs                 ["resources/public/libs"] ; recursively includes all children
