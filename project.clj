@@ -2,7 +2,7 @@
   :min-lein-version "2.7.1"
   :dependencies [[binaryage/oops "0.7.0"]
                  [org.clojure/clojure "1.10.0"]
-                 [org.clojure/clojurescript "1.10.439"]
+                 [org.clojure/clojurescript "1.10.520"]
                  [reagent "0.8.1"]
                  [reagent-utils "0.3.2"]
                  [tupelo "0.9.138"]]

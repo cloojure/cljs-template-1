@@ -10,7 +10,7 @@
 "This text is printed from src/flintstones/core.cljs.
 Go ahead and edit it and see reloading in action. Again, or not.")
 
-(println " Hello World! Again " )
+(println " Hello World! 1.10.520 " )
 
 (def states-all
   ["Alabama" "Alaska" "Arizona" "Arkansas" "California"
