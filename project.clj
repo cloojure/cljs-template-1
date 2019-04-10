@@ -1,14 +1,16 @@
 (defproject cljs-template "0.1.0-SNAPSHOT"
-  :min-lein-version "2.7.1"
+  :min-lein-version "2.8.1"
+  :exclusions [org.clojure/clojure
+               org.clojure/clojurescript]
   :dependencies [[binaryage/oops "0.7.0"]
                  [org.clojure/clojure "1.10.0"]
-                 [org.clojure/clojurescript "1.10.439"]
+                 [org.clojure/clojurescript "1.10.520"]
                  [reagent "0.8.1"]
                  [reagent-utils "0.3.2"]
-                 [tupelo "0.9.137"]]
-  :plugins [[lein-cljsbuild "1.1.7" :exclusions [[org.clojure/clojure]]]
-            [lein-figwheel "0.5.18"]
-            [lein-doo "0.1.10"]]
+                 [tupelo "0.9.138"]]
+  :plugins [[lein-cljsbuild "1.1.7"]
+            [lein-doo "0.1.10"]
+            [lein-figwheel "0.5.18"]]
 
   :doo {:karma {:config {"plugins"       ["karma-junit-reporter"]
                          "reporters"     ["progress" "junit"]
@@ -16,8 +18,8 @@
         :paths {:karma   "node_modules/karma/bin/karma"
                 :phantom "node_modules/phantomjs/bin/phantomjs"}}
 
-  :source-paths [ "src/cljc" "src/clj" ]
-  :test-paths [ "test/cljc" "test/clj" ]
+  :source-paths ["src/cljc" "src/clj"]
+  :test-paths ["test/cljc" "test/clj"] ; NOTE:  :test-paths doesn't work for cljs
 
   :cljsbuild {:builds
               [
@@ -45,12 +47,12 @@
                                ;                       ^^^^^ must match :output-dir
 
                                :source-map-timestamp true
-                               :parallel-build       true  ; #todo #awt test this
+                               :parallel-build       true ; #todo #awt test this
                                }
                 }
                {:id           "test"
-                :source-paths ["src/cljc" "src/cljs" ; NOTE:  :test-paths doesn't work for cljs
-                               "test/cljc" "test/cljs"]
+                :source-paths ["src/cljc" "test/cljc"
+                               "src/cljs" "test/cljs"] ; NOTE:  :test-paths doesnt work for cljs
                 :compiler     {:main                 tst.flintstones.doorunner
                                :optimizations        :none ; :advanced
                                :libs                 ["resources/public/libs"] ; recursively includes all children
@@ -63,9 +65,10 @@
                                :output-to            "resources/public/js/compiled/bedrock.js"
                                :output-dir           "resources/public/js/compiled/bedrock-out.d"
                                ; :asset-path           "who-cares.d"  ; not used for testing
+                               ;                       ^^^^^ must match :output-dir
 
                                :source-map-timestamp true
-                               :parallel-build       true  ; #todo #awt test this
+                               :parallel-build       true ; #todo #awt test this
                                }}]}
 
   ; need to add the compliled assets to the :clean-targets
@@ -73,6 +76,5 @@
                                     "out"
                                     :target-path]
 
-  ; automatically handle `--add-modules` stuff req'd for Java 9 & Java 10
-  :jvm-opts ["-Xms1g" "-Xmx4g" ]
-  )
+  :jvm-opts ["-Xms1g" "-Xmx4g"]
+)
