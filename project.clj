@@ -20,7 +20,7 @@
   :test-paths [ "test/cljc" "test/clj" ]
   :cljsbuild {:builds
               [{:id           "dev"
-                :source-paths [ "src/cljc" "src/cljs" ]
+                :source-paths ["src/cljc" "src/cljs"]
                 ; The presence of a :figwheel configuration here will cause figwheel to inject the
                 ; figwheel client into your build
                 :figwheel     {:on-jsload "flintstones.core/figwheel-reload"
@@ -38,14 +38,21 @@
                                :externs              ["dino-externs.js"]
 
                                :output-to            "resources/public/js/compiled/flintstones.js"
-                               :output-dir           "resources/public/js/compiled/flintstones-dev"
+                               :output-dir           "resources/public/js/compiled/flintstones-dev" ; #todo delete this?
                                :asset-path           "js/compiled/flintstones-dev" ; rel to figwheel default of `resources/public`
                                ;                       ^^^^^ must match :output-dir
+
+                               :output-dir           "resources/public/js/compiled/tmp.d"
+                               ; :asset-path           "js/compiled/bedrock-tst"  ; not used for testing
+                               ; ^^^ rel to figwheel default of `resources/public`
+
                                :source-map-timestamp true
-                               }}
+                               :parallel-build       true  ; #todo #awt test this
+                               }
+                }
                {:id           "test"
-                :source-paths [ "src/cljc" "test/cljc"
-                                "src/cljs" "test/cljs" ] ; #todo  :test-paths ???
+                :source-paths ["src/cljc" "src/cljs"]
+                :test-paths   ["test/cljc" "test/cljs"]
                 :compiler     {:main                 tst.flintstones.doorunner
                                :optimizations        :none ; :advanced
                                :libs                 ["resources/public/libs"] ; recursively includes all children
@@ -56,11 +63,14 @@
                                :externs              ["resources/public/dino-externs.js"]
 
                                :output-to            "resources/public/js/compiled/bedrock.js"
-                               :output-dir           "resources/public/js/compiled/bedrock-tst"
-                               ; :asset-path           "js/compiled/bedrock-tst"  ; not used for testing
+                               :output-dir           "resources/public/js/compiled/tmp.d"
+                               ; :asset-path           "js/compiled/tmp.d"  ; not used for testing
                                ; ^^^ rel to figwheel default of `resources/public`
+                               ;                       ^^^^^ must match :output-dir
 
-                               :source-map-timestamp true}}]}
+                               :source-map-timestamp true
+                               :parallel-build       true  ; #todo #awt test this
+                               }}]}
 
   ; need to add the compliled assets to the :clean-targets
   :clean-targets ^{:protect false} ["resources/public/js/compiled"

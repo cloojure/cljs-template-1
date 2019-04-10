@@ -6,9 +6,11 @@
     [clojure.string :as str] ))
 
 (enable-console-print!)
+
 (println
 "This text is printed from src/flintstones/core.cljs.
 Go ahead and edit it and see reloading in action. Again, or not.")
+
 (println " Hello World! " )
 
 (def states-all
@@ -22,10 +24,12 @@ Go ahead and edit it and see reloading in action. Again, or not.")
    "South Carolina" "South Dakota" "Tennessee" "Texas" "Utah" "Vermont"
    "Virginia" "Washington" "West Virginia" "Wisconsin" "Wyoming" ])
 
+(def states-curr-max-display 10)
+
 (def states-curr
   "The current list of (autocomplete) states to display"
   (r/atom []))
-(def states-curr-max-display 10)
+
 (defn states-autocomplete-list []
   [:ul {:id :states-keep}
    (let [list-items (vec (for [state (take states-curr-max-display @states-curr)]
@@ -51,7 +55,7 @@ Go ahead and edit it and see reloading in action. Again, or not.")
                                                         :border              "1px solid black"}}
                                            "..."])
                       list-items)]
-     (seq list-items)                   ; reagent needs a seq here; will fail if return a vector
+     (seq list-items)  ; reagent needs a seq here; will fail if return a vector
    )])
 
 (defn simple-component []
