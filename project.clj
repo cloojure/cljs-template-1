@@ -2,12 +2,15 @@
   :min-lein-version "2.8.1"
   :exclusions [org.clojure/clojure
                org.clojure/clojurescript]
-  :dependencies [[binaryage/oops "0.7.0"]
+  :dependencies [
+                 [binaryage/devtools "0.9.10"]
+                 [binaryage/oops "0.7.0"]
                  [org.clojure/clojure "1.10.0"]
                  [org.clojure/clojurescript "1.10.520"]
                  [reagent "0.8.1"]
                  [reagent-utils "0.3.2"]
-                 [tupelo "0.9.138"]]
+                 [tupelo "0.9.138"]
+                ]
   :plugins [[lein-cljsbuild "1.1.7"]
             [lein-doo "0.1.10"]
             [lein-figwheel "0.5.18"]]

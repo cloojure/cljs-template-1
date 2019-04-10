@@ -1,10 +1,12 @@
 (ns flintstones.core
   (:require
+    [devtools.core :as devtools]
     [oops.core :as oops]
     [reagent.core :as r]
     ))
 
 (enable-console-print!)
+(devtools/install!)
 
 (println
 "This text is printed from src/flintstones/core.cljs.
@@ -102,3 +104,45 @@ Go ahead and edit it and see reloading in action. Again, or not.")
 (app-start)
 
 
+(comment
+  ; #todo look at goog.log
+
+  (:require #?(:clj  [clojure.tools.logging :as log]
+               :cljs [goog.log :as glog]))
+  (:import goog.debug.Console)
+
+  (def logger
+    (glog/getLogger "app")) ; shows up as tag [app] in log msg
+
+  (def levels {:severe  goog.debug.Logger.Level.SEVERE
+               :warning goog.debug.Logger.Level.WARNING
+               :info    goog.debug.Logger.Level.INFO
+               :config  goog.debug.Logger.Level.CONFIG
+               :fine    goog.debug.Logger.Level.FINE
+               :finer   goog.debug.Logger.Level.FINER
+               :finest  goog.debug.Logger.Level.FINEST})
+
+  (defn log-to-console! []
+    (.setCapturing (goog.debug.Console.) true))
+
+  (defn set-level! [level]
+    (.setLevel logger (get levels level (:info levels))))
+
+  (defn fmt [msgs]
+    (apply str (interpose " " (map pr-str msgs))))
+
+  (defn info [& s]
+    (let [msg (fmt s)]
+      (glog/info logger msg)))
+  ; #todo (def logger (glog/getLogger "myapp.stuff.some-fn")  ; myapp.stuff/some-fn
+  ; #todo (glog/info logger (prn {:msg "it happened"  :data [...]} ))
+
+  (defn debug [& s]
+    (let [msg (fmt s)]
+      (glog/fine logger msg)))
+
+  (defn error [& s]
+    (let [msg (fmt s)]
+      (glog/error logger msg)))
+
+)
