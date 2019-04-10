@@ -10,7 +10,7 @@
 "This text is printed from src/flintstones/core.cljs.
 Go ahead and edit it and see reloading in action. Again, or not.")
 
-(println " Hello World! 1.10.520  ")
+(println "*** Hello World! 1.10.520 ***  ")
 
 (def states-all
   ["Alabama" "Alaska" "Arizona" "Arkansas" "California"
@@ -80,19 +80,25 @@ Go ahead and edit it and see reloading in action. Again, or not.")
      [states-autocomplete-list]
      [:input {:type "submit"}] ] ])
 
-(defonce counter (atom 0))
-
-(defn run []
-  (r/render [simple-component] (js/document.getElementById "tgt-div")))
+(defonce reload-counter (atom 0))
 
 (defn figwheel-reload []
+  (comment ; Called via this line in `project.clj`:
+    :on-jsload "flintstones.core/figwheel-reload" )
+
   ; optionally touch your app-state to force rerendering depending on your application
   ; (swap! app-state update-in [:__figwheel_counter] inc)
-  (println "Reloading: " (swap! counter inc)))
+  (println "figwheel-reload:  count =" (swap! reload-counter inc)))
 
-(when (zero? @counter)
-  (println "Initial load")
-  (figwheel-reload))
-(run)
+(defn app-start
+  "Initiates the cljs application. Called upon page load/reload."
+  []
+  (println "***** app-start - enter *****")
+  (r/render [simple-component] (js/document.getElementById "tgt-div"))
+  (println "***** app-start - leave *****"))
+
+;***************************************************************************************************
+; kick off the app when this file is loaded
+(app-start)
 
 

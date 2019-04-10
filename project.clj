@@ -15,8 +15,7 @@
   :doo {:karma {:config {"plugins"       ["karma-junit-reporter"]
                          "reporters"     ["progress" "junit"]
                          "junitReporter" {"outputDir" "target/test-results"}}}
-        :paths {:karma   "node_modules/karma/bin/karma"
-                :phantom "node_modules/phantomjs/bin/phantomjs"}}
+        :paths {:karma   "node_modules/karma/bin/karma" }}
 
   :source-paths ["src/cljc" "src/clj"]
   :test-paths ["test/cljc" "test/clj"] ; NOTE:  :test-paths doesn't work for cljs
@@ -34,6 +33,9 @@
                                :open-urls ["http://localhost:3449/index.html"]}
                 :compiler     {:main                 flintstones.core
                                :optimizations        :none
+                               :source-map-timestamp true
+                               :parallel-build       true ; #todo #awt test this
+                               ;:verbose             true
                                :libs                 ["resources/public/libs"] ; recursive includes all children
 
                                ; figwheel server has implicit path `resources/public`, leave off here
@@ -46,8 +48,6 @@
                                :asset-path           "js/compiled/flintstones-out.d" ; rel to figwheel default of `resources/public`
                                ;                       ^^^^^ must match :output-dir
 
-                               :source-map-timestamp true
-                               :parallel-build       true ; #todo #awt test this
                                }
                 }
                {:id           "test"
