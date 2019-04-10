@@ -18,8 +18,10 @@
 
   :source-paths [ "src/cljc" "src/clj" ]
   :test-paths [ "test/cljc" "test/clj" ]
+
   :cljsbuild {:builds
-              [{:id           "dev"
+              [
+               {:id           "dev"
                 :source-paths ["src/cljc" "src/cljs"]
                 ; The presence of a :figwheel configuration here will cause figwheel to inject the
                 ; figwheel client into your build
@@ -38,21 +40,17 @@
                                :externs              ["dino-externs.js"]
 
                                :output-to            "resources/public/js/compiled/flintstones.js"
-                               :output-dir           "resources/public/js/compiled/flintstones-dev" ; #todo delete this?
-                               :asset-path           "js/compiled/flintstones-dev" ; rel to figwheel default of `resources/public`
+                               :output-dir           "resources/public/js/compiled/flintstones-out.d" ; #todo delete this?
+                               :asset-path           "js/compiled/flintstones-out.d" ; rel to figwheel default of `resources/public`
                                ;                       ^^^^^ must match :output-dir
-
-                               :output-dir           "resources/public/js/compiled/tmp.d"
-                               ; :asset-path           "js/compiled/bedrock-tst"  ; not used for testing
-                               ; ^^^ rel to figwheel default of `resources/public`
 
                                :source-map-timestamp true
                                :parallel-build       true  ; #todo #awt test this
                                }
                 }
                {:id           "test"
-                :source-paths ["src/cljc" "src/cljs"]
-                :test-paths   ["test/cljc" "test/cljs"]
+                :source-paths ["src/cljc" "src/cljs" ; NOTE:  :test-paths doesn't work for cljs
+                               "test/cljc" "test/cljs"]
                 :compiler     {:main                 tst.flintstones.doorunner
                                :optimizations        :none ; :advanced
                                :libs                 ["resources/public/libs"] ; recursively includes all children
@@ -63,10 +61,8 @@
                                :externs              ["resources/public/dino-externs.js"]
 
                                :output-to            "resources/public/js/compiled/bedrock.js"
-                               :output-dir           "resources/public/js/compiled/tmp.d"
-                               ; :asset-path           "js/compiled/tmp.d"  ; not used for testing
-                               ; ^^^ rel to figwheel default of `resources/public`
-                               ;                       ^^^^^ must match :output-dir
+                               :output-dir           "resources/public/js/compiled/bedrock-out.d"
+                               ; :asset-path           "who-cares.d"  ; not used for testing
 
                                :source-map-timestamp true
                                :parallel-build       true  ; #todo #awt test this
@@ -78,5 +74,5 @@
                                     :target-path]
 
   ; automatically handle `--add-modules` stuff req'd for Java 9 & Java 10
-  :jvm-opts ["-Xmx1g"]
+  :jvm-opts ["-Xms1g" "-Xmx4g" ]
   )
