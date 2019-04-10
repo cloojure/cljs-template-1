@@ -2,14 +2,15 @@
   (:require
     [oops.core :as oops]
     [reagent.core :as r]
-    [reagent.format :as rf]
-    [clojure.string :as str] ))
+    ))
 
 (enable-console-print!)
+
 (println
 "This text is printed from src/flintstones/core.cljs.
 Go ahead and edit it and see reloading in action. Again, or not.")
-(println " Hello World! " )
+
+(println " Hello World! Again " )
 
 (def states-all
   ["Alabama" "Alaska" "Arizona" "Arkansas" "California"
@@ -25,6 +26,7 @@ Go ahead and edit it and see reloading in action. Again, or not.")
 (def states-curr
   "The current list of (autocomplete) states to display"
   (r/atom []))
+
 (def states-curr-max-display 10)
 (defn states-autocomplete-list []
   [:ul {:id :states-keep}
