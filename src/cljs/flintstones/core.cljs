@@ -105,44 +105,51 @@ Go ahead and edit it and see reloading in action. Again, or not.")
 
 
 (comment
-  ; #todo look at goog.log
+  ; was working on refining this, but looks like timbre is better
+  (ns logging-demo
+    (:require
+      [goog.log :as glog]
+      [tupelo.core :as t])
+    (:import goog.debug.Console))
 
-  (:require #?(:clj  [clojure.tools.logging :as log]
-               :cljs [goog.log :as glog]))
-  (:import goog.debug.Console)
+  (enable-console-print!)
 
-  (def logger
-    (glog/getLogger "app")) ; shows up as tag [app] in log msg
+  (println :awt-minerva-log--top)
+  (t/spy :awt-minerva-log--top-spy)
 
-  (def levels {:severe  goog.debug.Logger.Level.SEVERE
-               :warning goog.debug.Logger.Level.WARNING
-               :info    goog.debug.Logger.Level.INFO
-               :config  goog.debug.Logger.Level.CONFIG
-               :fine    goog.debug.Logger.Level.FINE
-               :finer   goog.debug.Logger.Level.FINER
-               :finest  goog.debug.Logger.Level.FINEST})
+  (def logger (glog/getLogger "minerva.config"))
+
+  (def goog-log-levels {:off     goog.debug.Logger.Level.OFF ; never used, so supresses all log msgs
+
+                        :shout   goog.debug.Logger.Level.SHOUT ; highest value for log msgs
+                        :severe  goog.debug.Logger.Level.SEVERE
+                        :warning goog.debug.Logger.Level.WARNING
+                        :info    goog.debug.Logger.Level.INFO
+                        :config  goog.debug.Logger.Level.CONFIG
+                        :fine    goog.debug.Logger.Level.FINE
+                        :finer   goog.debug.Logger.Level.FINER
+                        :finest  goog.debug.Logger.Level.FINEST ;lowest value for log msgs
+
+                        :all     goog.debug.Logger.Level.ALL ; never used, so allows all log msgs
+                        })
 
   (defn log-to-console! []
     (.setCapturing (goog.debug.Console.) true))
 
   (defn set-level! [level]
-    (.setLevel logger (get levels level (:info levels))))
+    (.setLevel logger (get goog-log-levels level (:info goog-log-levels))))
 
-  (defn fmt [msgs]
-    (apply str (interpose " " (map pr-str msgs))))
+  (log-to-console!)
+  (set-level! :info)
 
-  (defn info [& s]
-    (let [msg (fmt s)]
-      (glog/info logger msg)))
-  ; #todo (def logger (glog/getLogger "myapp.stuff.some-fn")  ; myapp.stuff/some-fn
-  ; #todo (glog/info logger (prn {:msg "it happened"  :data [...]} ))
+  (defn error [msg] (glog/error logger msg))
+  (defn warning [msg] (glog/warning logger msg))
+  (defn debug [msg] (glog/fine logger msg))
+  (defn info [msg] (glog/info logger msg))
+  (defn config [msg] (glog/config logger msg))
+  (defn fine [msg] (glog/fine logger msg))
+  (defn finer [msg] (glog/finer logger msg))
+  (defn finest [msg] (glog/finest logger msg))
 
-  (defn debug [& s]
-    (let [msg (fmt s)]
-      (glog/fine logger msg)))
-
-  (defn error [& s]
-    (let [msg (fmt s)]
-      (glog/error logger msg)))
 
 )
